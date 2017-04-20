@@ -55,7 +55,6 @@ var v = wantedColumnIndex;
 v += 1;
 
 
-/*
 
 var table, rows, switching, i, x, y, shouldSwitch;
   table = document.getElementById("people");
@@ -75,10 +74,12 @@ var table, rows, switching, i, x, y, shouldSwitch;
       //one from current row and one from the next:
       x = rows[i].getElementsByTagName("TD")[v];
       y = rows[i + 1].getElementsByTagName("TD")[v];
+      
       //check if the two rows should switch place:
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+      if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
         //if so, mark as a switch and break the loop:
         shouldSwitch= true;
+        document.getElementById("debug").innerHTML += parseFloat(x.innerHTML) + " " + parseFloat(y.innerHTML);
         break;
       }
     }
@@ -88,8 +89,7 @@ var table, rows, switching, i, x, y, shouldSwitch;
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
     }
-
-*/
+}
 
 
 
@@ -99,7 +99,7 @@ $('tr > :not(*:nth-child('+v+'))').hide();
 
 $('tr th:nth-child(1)').show();
   
- // document.getElementById("debug").innerHTML = v;
+
 
 
 
