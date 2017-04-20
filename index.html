@@ -9,8 +9,20 @@ p    {color: red;font-family: "Times New Roman", Times, serif;}
 </head>
 <body>
 
-  <textarea rows="1" cols="30"></textarea>
-  <button type="button">Find my compatible roomies!</button>
+Insert full name (capitalize first and last; e.g. "Hakan Alpay")
+<textarea rows="1" cols="30" id="name"></textarea>
+
+<button type="button" onclick="showColumn()">Find my compatible roomies!</button>
+
+
+
+<script>
+function showColumn() {
+    fullName = document.getElementById("name").value;
+    
+}
+</script>
+
 
 </body>
 </html>
