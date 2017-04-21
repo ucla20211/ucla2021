@@ -1,112 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-body {background-color: powderblue;}
-h1   {color: blue;}
-p    {color: red;font-family: "Times New Roman", Times, serif;}
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-</head>
-<body>
 
-
-Insert full name (capitalize first and last; e.g. "Hakan Alpay")<br>
-
-
-<textarea rows="1" cols="30" id="name"></textarea>
-
-<button onclick="showColumn()">Find my compatible roomies!</button>
-
-<p id="debug"></p>
-
-
-
-
-<script>
-function showColumn() {
-
-
-var fullName = document.getElementById("name").value;
-document.getElementById('people').style.display = 'table';
-
-
-var wantedName = jQuery("textarea#name").val();
-
-var selector = "th:contains("+ wantedName +")";
-
-var wantedColumnIndex = $(selector).index();
-
-var v = wantedColumnIndex;
-v += 1;
-
-  table = document.getElementById("people");
-
-
-
-sortTable(table, v-1, 1)
-
-
-$('tr > :not(*:nth-child('+v+'))').hide();
-
-
-$('tr th:nth-child(1)').show();
-$('tr th:nth-child(2)').show();
-$('tr td:nth-child(2)').show();
-  
-
-
-
-
-
-
-}
-
-
-function sortTable(table, col, reverse) {
-    var tb = table.tBodies[0], // use `<tbody>` to ignore `<thead>` and `<tfoot>` rows
-        tr = Array.prototype.slice.call(tb.rows, 0), // put rows into array
-        i;
-    reverse = -((+reverse) || -1);
-    
-    tr = tr.sort(function (a, b) { // sort rows
-        
-        
-        if(!isNaN(a.cells[col].textContent) && !isNaN(b.cells[col].textContent))
-        return reverse * ((+a.cells[col].textContent) - (+b.cells[col].textContent))
-       return reverse // `-1 *` if want opposite order
-            * (a.cells[col].textContent.trim() // using `.textContent.trim()` for test
-                .localeCompare(b.cells[col].textContent.trim())
-               );
-    });
-    for(i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
-}
-
-function makeSortable(table) {
-    var th = table.tHead, i;
-    th && (th = th.rows[0]) && (th = th.cells);
-    if (th) i = th.length;
-    else return; // if no `<thead>` then do nothing
-    while (--i >= 0) (function (i) {
-        var dir = 1;
-        //th[i].addEventListener('click', function () {sortTable(table, i, (dir = 1 - dir))});
-    }(i));
-}
-
-function makeAllSortable(parent) {
-    parent = parent || document.body;
-    var t = parent.getElementsByTagName('table'), i = t.length;
-    while (--i >= 0) makeSortable(t[i]);
-}
-
-window.onload = function () {makeAllSortable();};
-</script>
-
-  
-
-
-
-<table border="1" class="dataframe" display="none" id="people">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -122,6 +15,32 @@ window.onload = function () {makeAllSortable();};
       <th>Ashley Du</th>
       <th>Ameer Alameddin</th>
       <th>Tester 1</th>
+      <th>Calvin Huynh</th>
+      <th>Brienne Solis</th>
+      <th>Joyce Yu</th>
+      <th>Isaura Mora</th>
+      <th>Miranda Fedoronczuk</th>
+      <th>Khoi Nguyen</th>
+      <th>Juan Santos</th>
+      <th>Katrina Priya</th>
+      <th>Dylan Tan</th>
+      <th>Janine Chan</th>
+      <th>Daniel Oh</th>
+      <th>Maya Sinha</th>
+      <th>Yuting Yu</th>
+      <th>Curtis Wong</th>
+      <th>Kim Nguyen</th>
+      <th>Andrew Lee</th>
+      <th>Nikhil Tony Idiculla</th>
+      <th>Jackey Tang</th>
+      <th>Andrea O'Riordan</th>
+      <th>Amandeep Dosanjh</th>
+      <th>Bijal Luhar</th>
+      <th>Rafaela Galia</th>
+      <th>Morgan Baxter</th>
+      <th>Alec Jo</th>
+      <th>Hakan Alpay</th>
+      <th>Callista Wu</th>
     </tr>
   </thead>
   <tbody>
@@ -139,6 +58,32 @@ window.onload = function () {makeAllSortable();};
       <td>0.80</td>
       <td>0.90</td>
       <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>1.00</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>William Cryer</th>
@@ -154,6 +99,32 @@ window.onload = function () {makeAllSortable();};
       <td>0.80</td>
       <td>0.80</td>
       <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.60</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
     </tr>
     <tr>
       <th>Rida Ali</th>
@@ -169,6 +140,32 @@ window.onload = function () {makeAllSortable();};
       <td>0.65</td>
       <td>0.85</td>
       <td>0.90</td>
+      <td>0.65</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.55</td>
+      <td>0.60</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.55</td>
+      <td>0.75</td>
     </tr>
     <tr>
       <th>Valentine Salomone</th>
@@ -184,6 +181,32 @@ window.onload = function () {makeAllSortable();};
       <td>0.65</td>
       <td>0.75</td>
       <td>0.90</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.55</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.65</td>
+      <td>0.85</td>
     </tr>
     <tr>
       <th>Michael Quicho</th>
@@ -199,6 +222,32 @@ window.onload = function () {makeAllSortable();};
       <td>0.75</td>
       <td>0.85</td>
       <td>0.80</td>
+      <td>0.65</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.55</td>
+      <td>0.75</td>
     </tr>
     <tr>
       <th>Noah Weinstein</th>
@@ -214,6 +263,32 @@ window.onload = function () {makeAllSortable();};
       <td>0.75</td>
       <td>0.85</td>
       <td>0.90</td>
+      <td>0.65</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.55</td>
+      <td>0.75</td>
     </tr>
     <tr>
       <th>Eugene Chung</th>
@@ -229,6 +304,32 @@ window.onload = function () {makeAllSortable();};
       <td>0.80</td>
       <td>0.80</td>
       <td>0.75</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>1.00</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.60</td>
+      <td>0.80</td>
     </tr>
     <tr>
       <th>Ally Wade</th>
@@ -244,6 +345,32 @@ window.onload = function () {makeAllSortable();};
       <td>0.80</td>
       <td>0.70</td>
       <td>0.85</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.60</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.70</td>
+      <td>0.80</td>
     </tr>
     <tr>
       <th>Ashley Du</th>
@@ -259,6 +386,32 @@ window.onload = function () {makeAllSortable();};
       <td>1.00</td>
       <td>0.80</td>
       <td>0.65</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.95</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.80</td>
     </tr>
     <tr>
       <th>Ameer Alameddin</th>
@@ -274,6 +427,32 @@ window.onload = function () {makeAllSortable();};
       <td>0.80</td>
       <td>1.00</td>
       <td>0.85</td>
+      <td>0.70</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.90</td>
     </tr>
     <tr>
       <th>Tester 1</th>
@@ -289,12 +468,1098 @@ window.onload = function () {makeAllSortable();};
       <td>0.65</td>
       <td>0.85</td>
       <td>1.00</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.65</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Calvin Huynh</th>
+      <td>Male</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>1.00</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.60</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <th>Brienne Solis</th>
+      <td>Female</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>1.00</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.65</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Joyce Yu</th>
+      <td>Female</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Isaura Mora</th>
+      <td>Female</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.95</td>
+      <td>1.00</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.95</td>
+    </tr>
+    <tr>
+      <th>Miranda Fedoronczuk</th>
+      <td>Female</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>1.00</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.95</td>
+    </tr>
+    <tr>
+      <th>Khoi Nguyen</th>
+      <td>Male</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>1.00</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.65</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.55</td>
+      <td>0.60</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.55</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>Juan Santos</th>
+      <td>Male</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>1.00</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>1.00</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.60</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <th>Katrina Priya</th>
+      <td>Female</td>
+      <td>0.70</td>
+      <td>0.60</td>
+      <td>0.65</td>
+      <td>0.55</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.60</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.65</td>
+      <td>0.60</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>1.00</td>
+      <td>0.70</td>
+      <td>0.65</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.60</td>
+      <td>0.70</td>
+    </tr>
+    <tr>
+      <th>Dylan Tan</th>
+      <td>Male</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.55</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.65</td>
+      <td>0.90</td>
+      <td>0.65</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.55</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>1.00</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <th>Janine Chan</th>
+      <td>Female</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.60</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.60</td>
+      <td>0.75</td>
+      <td>0.65</td>
+      <td>0.95</td>
+      <td>1.00</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Daniel Oh</th>
+      <td>Male</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>1.00</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.55</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>Maya Sinha</th>
+      <td>Female</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.65</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Yuting Yu</th>
+      <td>Male</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.65</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Curtis Wong</th>
+      <td>Male</td>
+      <td>1.00</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>1.00</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>Kim Nguyen</th>
+      <td>Female</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.95</td>
+      <td>1.00</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.95</td>
+    </tr>
+    <tr>
+      <th>Andrew Lee</th>
+      <td>Male</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>1.00</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <th>Nikhil Tony Idiculla</th>
+      <td>Male</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>1.00</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.65</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Jackey Tang</th>
+      <td>Male</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>1.00</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.65</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Andrea O'Riordan</th>
+      <td>Female</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>1.00</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.70</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <th>Amandeep Dosanjh</th>
+      <td>Female</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.95</td>
+      <td>0.70</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.60</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <th>Bijal Luhar</th>
+      <td>Female</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.60</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <th>Rafaela Galia</th>
+      <td>Female</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.95</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.60</td>
+      <td>0.70</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>1.00</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.70</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <th>Morgan Baxter</th>
+      <td>Female</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>1.00</td>
+      <td>1.00</td>
+      <td>0.65</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Alec Jo</th>
+      <td>Male</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>1.00</td>
+      <td>1.00</td>
+      <td>0.65</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Hakan Alpay</th>
+      <td>Male</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.55</td>
+      <td>0.65</td>
+      <td>0.55</td>
+      <td>0.55</td>
+      <td>0.60</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.65</td>
+      <td>0.80</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.55</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.55</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.80</td>
+      <td>0.75</td>
+      <td>0.70</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.70</td>
+      <td>0.60</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>1.00</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <th>Callista Wu</th>
+      <td>Female</td>
+      <td>1.00</td>
+      <td>0.90</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>1.00</td>
+      <td>0.95</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
+      <td>0.80</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>1.00</td>
     </tr>
   </tbody>
 </table>
-
-
-
-
-</body>
-</html>
