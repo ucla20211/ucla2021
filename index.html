@@ -30,15 +30,6 @@ function showColumn() {
 var fullName = document.getElementById("name").value;
 document.getElementById('people').style.display = 'table';
 
-/*
-if(fullName == ""){
-break;
-}
-*/
-//$("table").hide();
-
-//$('th').hide();
-//$('td').hide();
 
 var wantedName = jQuery("textarea#name").val();
 
@@ -46,60 +37,21 @@ var selector = "th:contains("+ wantedName +")";
 
 var wantedColumnIndex = $(selector).index();
 
-//$("p:contains('" + vtxt + "')").addClass("on");
-
-//var selector = "p:contains("+ vtxt +")";
-//$(selector).addClass("on");
-
 var v = wantedColumnIndex;
 v += 1;
 
   table = document.getElementById("people");
 
-/*
-var table, rows, switching, i, x, y, shouldSwitch;
-  switching = true;
-  //Make a loop that will continue until
-  //no switching has been done:
-while (switching) {
-    //start by saying: no switching is done:
-    switching = false;
-    rows = table.getElementsByTagName("TR");
-    //Loop through all table rows (except the
-    //first, which contains table headers):
-    for (i = 1; i < (rows.length - 1); i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      //Get the two elements you want to compare,
-      //one from current row and one from the next:
-      x = rows[i].getElementsByTagName("TD")[v];
-      y = rows[i + 1].getElementsByTagName("TD")[v];
-      
-      //check if the two rows should switch place:
-      if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch= true;
-        document.getElementById("debug").innerHTML += parseFloat(x.innerHTML) + " " + parseFloat(y.innerHTML);
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      //If a switch has been marked, make the switch
-      //and mark that a switch has been done:
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-}
-*/
 
 
-sortTable(table, v, 1)
+sortTable(table, v-1, 1)
 
 
 $('tr > :not(*:nth-child('+v+'))').hide();
 
 
 $('tr th:nth-child(1)').show();
+//$('tr th:nth-child(2)').show();
   
 
 
@@ -152,368 +104,189 @@ window.onload = function () {makeAllSortable();};
   
 
 
-<table border="1" class="dataframe" style="display:none" id="people">
+
+<table border="1" class="dataframe" display="none" id="people">
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Some Girl</th>
-      <th>Joana Lacerda</th>
-      <th>Rebecca Xu</th>
-      <th>Arnav Garg</th>
-      <th>Devam Shroff</th>
-      <th>Michaella Baltazar</th>
-      <th>Aubrey (Aubie) Anderson</th>
-      <th>Gimaggio Funes</th>
-      <th>Andrew Lucchesi</th>
-      <th>Andrew Selius</th>
-      <th>Shaina Patel</th>
-      <th>Sedef Siddiqi</th>
-      <th>Kristi Nguyen</th>
-      <th>Amy Zhao</th>
-      <th>Hakan Alpay</th>
-      <th>Enika Biswas</th>
-      <th>John H. Tabakian</th>
+      <th>Gender</th>
+      <th>Roselyn Andyta</th>
+      <th>William Cryer</th>
+      <th>Rida Ali</th>
+      <th>Valentine Salomone</th>
+      <th>Michael Quicho</th>
+      <th>Noah Weinstein</th>
+      <th>Eugene Chung</th>
+      <th>Ally Wade</th>
+      <th>Ashley Du</th>
+      <th>Ameer Alameddin</th>
+      <th>Tester 1</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Some Girl</th>
+      <th>Roselyn Andyta</th>
+      <td>Female</td>
       <td>1.00</td>
-      <td>0.55</td>
-      <td>0.50</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.70</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.60</td>
-      <td>0.80</td>
-      <td>1.00</td>
-      <td>0.75</td>
-      <td>0.60</td>
-      <td>0.55</td>
-      <td>0.55</td>
-      <td>0.50</td>
       <td>0.90</td>
-    </tr>
-    <tr>
-      <th>Joana Lacerda</th>
-      <td>0.55</td>
-      <td>1.00</td>
-      <td>0.65</td>
-      <td>0.45</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.55</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.70</td>
-      <td>0.60</td>
-      <td>0.55</td>
-      <td>0.65</td>
-    </tr>
-    <tr>
-      <th>Rebecca Xu</th>
-      <td>0.50</td>
-      <td>0.65</td>
-      <td>1.00</td>
-      <td>0.60</td>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.60</td>
-      <td>0.65</td>
-      <td>0.80</td>
-      <td>0.70</td>
-      <td>0.50</td>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.85</td>
-      <td>0.95</td>
-      <td>0.90</td>
-      <td>0.60</td>
-    </tr>
-    <tr>
-      <th>Arnav Garg</th>
-      <td>0.80</td>
-      <td>0.45</td>
-      <td>0.60</td>
-      <td>1.00</td>
-      <td>0.65</td>
-      <td>0.60</td>
-      <td>0.70</td>
-      <td>0.65</td>
-      <td>0.70</td>
-      <td>0.70</td>
-      <td>0.80</td>
-      <td>0.55</td>
-      <td>0.70</td>
-      <td>0.65</td>
-      <td>0.65</td>
-      <td>0.50</td>
-      <td>0.80</td>
-    </tr>
-    <tr>
-      <th>Devam Shroff</th>
-      <td>0.75</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.65</td>
-      <td>1.00</td>
-      <td>0.95</td>
-      <td>0.75</td>
-      <td>0.80</td>
       <td>0.75</td>
       <td>0.85</td>
       <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
       <td>0.90</td>
       <td>0.85</td>
-      <td>0.80</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.75</td>
     </tr>
     <tr>
-      <th>Michaella Baltazar</th>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.60</td>
-      <td>0.95</td>
-      <td>1.00</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.80</td>
-      <td>0.70</td>
-      <td>0.95</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.70</td>
-    </tr>
-    <tr>
-      <th>Aubrey (Aubie) Anderson</th>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.60</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.70</td>
-      <td>1.00</td>
-      <td>0.95</td>
-      <td>0.70</td>
-      <td>0.80</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.65</td>
-      <td>0.50</td>
-      <td>0.80</td>
-    </tr>
-    <tr>
-      <th>Gimaggio Funes</th>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.65</td>
-      <td>0.65</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.95</td>
+      <th>William Cryer</th>
+      <td>Male</td>
+      <td>0.90</td>
       <td>1.00</td>
       <td>0.75</td>
       <td>0.85</td>
       <td>0.75</td>
+      <td>0.75</td>
       <td>0.80</td>
-      <td>0.85</td>
+      <td>0.90</td>
       <td>0.80</td>
-      <td>0.70</td>
-      <td>0.55</td>
+      <td>0.80</td>
       <td>0.85</td>
     </tr>
     <tr>
-      <th>Andrew Lucchesi</th>
-      <td>0.60</td>
+      <th>Rida Ali</th>
+      <td>Female</td>
       <td>0.75</td>
-      <td>0.80</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.70</td>
       <td>0.75</td>
       <td>1.00</td>
-      <td>0.80</td>
-      <td>0.60</td>
-      <td>0.75</td>
+      <td>0.90</td>
+      <td>0.90</td>
       <td>0.90</td>
       <td>0.85</td>
       <td>0.75</td>
-      <td>0.70</td>
-      <td>0.70</td>
-    </tr>
-    <tr>
-      <th>Andrew Selius</th>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.70</td>
-      <td>0.70</td>
+      <td>0.65</td>
       <td>0.85</td>
-      <td>0.80</td>
-      <td>0.80</td>
-      <td>0.85</td>
-      <td>0.80</td>
-      <td>1.00</td>
-      <td>0.80</td>
-      <td>0.85</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.60</td>
       <td>0.90</td>
     </tr>
     <tr>
-      <th>Shaina Patel</th>
+      <th>Valentine Salomone</th>
+      <td>Female</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.90</td>
       <td>1.00</td>
-      <td>0.55</td>
-      <td>0.50</td>
       <td>0.80</td>
-      <td>0.75</td>
-      <td>0.70</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.60</td>
       <td>0.80</td>
-      <td>1.00</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.65</td>
       <td>0.75</td>
-      <td>0.60</td>
-      <td>0.55</td>
-      <td>0.55</td>
-      <td>0.50</td>
       <td>0.90</td>
     </tr>
     <tr>
-      <th>Sedef Siddiqi</th>
+      <th>Michael Quicho</th>
+      <td>Genderqueer</td>
       <td>0.75</td>
+      <td>0.75</td>
+      <td>0.90</td>
       <td>0.80</td>
-      <td>0.75</td>
-      <td>0.55</td>
+      <td>1.00</td>
       <td>0.90</td>
       <td>0.95</td>
       <td>0.75</td>
-      <td>0.80</td>
       <td>0.75</td>
       <td>0.85</td>
-      <td>0.75</td>
-      <td>1.00</td>
-      <td>0.75</td>
-      <td>0.70</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.75</td>
+      <td>0.80</td>
     </tr>
     <tr>
-      <th>Kristi Nguyen</th>
-      <td>0.60</td>
+      <th>Noah Weinstein</th>
+      <td>Male</td>
       <td>0.75</td>
-      <td>0.80</td>
-      <td>0.70</td>
-      <td>0.85</td>
-      <td>0.80</td>
-      <td>0.80</td>
-      <td>0.85</td>
+      <td>0.75</td>
       <td>0.90</td>
       <td>0.80</td>
-      <td>0.60</td>
-      <td>0.75</td>
+      <td>0.90</td>
       <td>1.00</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <th>Eugene Chung</th>
+      <td>Female</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.85</td>
       <td>0.95</td>
       <td>0.85</td>
-      <td>0.70</td>
-      <td>0.70</td>
-    </tr>
-    <tr>
-      <th>Amy Zhao</th>
-      <td>0.55</td>
-      <td>0.70</td>
-      <td>0.85</td>
-      <td>0.65</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.80</td>
-      <td>0.85</td>
-      <td>0.75</td>
-      <td>0.55</td>
-      <td>0.70</td>
-      <td>0.95</td>
       <td>1.00</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>Ally Wade</th>
+      <td>Female</td>
+      <td>0.80</td>
       <td>0.90</td>
       <td>0.75</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <th>Ashley Du</th>
+      <td>Female</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>0.65</td>
+      <td>0.65</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.80</td>
+      <td>0.80</td>
+      <td>1.00</td>
+      <td>0.80</td>
       <td>0.65</td>
     </tr>
     <tr>
-      <th>Hakan Alpay</th>
-      <td>0.55</td>
-      <td>0.60</td>
-      <td>0.95</td>
-      <td>0.65</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.65</td>
-      <td>0.70</td>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.55</td>
-      <td>0.70</td>
-      <td>0.85</td>
+      <th>Ameer Alameddin</th>
+      <td>Male</td>
       <td>0.90</td>
+      <td>0.80</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.80</td>
+      <td>0.70</td>
+      <td>0.80</td>
       <td>1.00</td>
       <td>0.85</td>
-      <td>0.65</td>
     </tr>
     <tr>
-      <th>Enika Biswas</th>
-      <td>0.50</td>
-      <td>0.55</td>
+      <th>Tester 1</th>
+      <td>Female</td>
+      <td>0.85</td>
+      <td>0.85</td>
       <td>0.90</td>
-      <td>0.50</td>
-      <td>0.75</td>
+      <td>0.90</td>
       <td>0.80</td>
-      <td>0.50</td>
-      <td>0.55</td>
-      <td>0.70</td>
-      <td>0.60</td>
-      <td>0.50</td>
-      <td>0.75</td>
-      <td>0.70</td>
+      <td>0.90</td>
       <td>0.75</td>
       <td>0.85</td>
-      <td>1.00</td>
-      <td>0.50</td>
-    </tr>
-    <tr>
-      <th>John H. Tabakian</th>
-      <td>0.90</td>
       <td>0.65</td>
-      <td>0.60</td>
-      <td>0.80</td>
-      <td>0.75</td>
-      <td>0.70</td>
-      <td>0.80</td>
       <td>0.85</td>
-      <td>0.70</td>
-      <td>0.90</td>
-      <td>0.90</td>
-      <td>0.75</td>
-      <td>0.70</td>
-      <td>0.65</td>
-      <td>0.65</td>
-      <td>0.50</td>
       <td>1.00</td>
     </tr>
   </tbody>
