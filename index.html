@@ -1,5 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;font-family: "Times New Roman", Times, serif;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<body>
 
-<table border="1" class="dataframe">
+
+Insert full name (capitalize first and last; e.g. "Hakan Alpay")<br>
+
+
+<textarea rows="1" cols="30" id="name"></textarea>
+
+<button onclick="showColumn()">Find my compatible roomies!</button>
+
+<p id="debug"></p>
+
+
+
+
+<script>
+function showColumn() {
+
+
+var fullName = document.getElementById("name").value;
+document.getElementById('people').style.display = 'table';
+
+
+var wantedName = jQuery("textarea#name").val();
+
+var selector = "th:contains("+ wantedName +")";
+
+var wantedColumnIndex = $(selector).index();
+
+var v = wantedColumnIndex;
+v += 1;
+
+  table = document.getElementById("people");
+
+
+
+sortTable(table, v-1, 1)
+
+
+$('tr > :not(*:nth-child('+v+'))').hide();
+
+
+$('tr th:nth-child(1)').show();
+$('tr th:nth-child(2)').show();
+$('tr td:nth-child(2)').show();
+  
+
+
+
+
+
+
+}
+
+
+function sortTable(table, col, reverse) {
+    var tb = table.tBodies[0], // use `<tbody>` to ignore `<thead>` and `<tfoot>` rows
+        tr = Array.prototype.slice.call(tb.rows, 0), // put rows into array
+        i;
+    reverse = -((+reverse) || -1);
+    
+    tr = tr.sort(function (a, b) { // sort rows
+        
+        
+        if(!isNaN(a.cells[col].textContent) && !isNaN(b.cells[col].textContent))
+        return reverse * ((+a.cells[col].textContent) - (+b.cells[col].textContent))
+       return reverse // `-1 *` if want opposite order
+            * (a.cells[col].textContent.trim() // using `.textContent.trim()` for test
+                .localeCompare(b.cells[col].textContent.trim())
+               );
+    });
+    for(i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
+}
+
+function makeSortable(table) {
+    var th = table.tHead, i;
+    th && (th = th.rows[0]) && (th = th.cells);
+    if (th) i = th.length;
+    else return; // if no `<thead>` then do nothing
+    while (--i >= 0) (function (i) {
+        var dir = 1;
+        //th[i].addEventListener('click', function () {sortTable(table, i, (dir = 1 - dir))});
+    }(i));
+}
+
+function makeAllSortable(parent) {
+    parent = parent || document.body;
+    var t = parent.getElementsByTagName('table'), i = t.length;
+    while (--i >= 0) makeSortable(t[i]);
+}
+
+window.onload = function () {makeAllSortable();};
+</script>
+
+  
+
+
+
+
+<table border="1" class="dataframe" display="none" id="people">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -1563,3 +1671,9 @@
     </tr>
   </tbody>
 </table>
+
+
+
+
+</body>
+</html>
