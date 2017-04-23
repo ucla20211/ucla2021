@@ -9,6 +9,8 @@ p    {color: red;font-family: "Times New Roman", Times, serif;}
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  
 <script>
   google.charts.load('current', {'packages':['table']});
    
@@ -22,16 +24,11 @@ p    {color: red;font-family: "Times New Roman", Times, serif;}
   // Replace the data source URL on next line with your data source URL.
   var query = new google.visualization.Query(dataSourceUrl, opts);
      
-
+var indexOfName = $('#dfind td:contains(' + desiredName + ')').index();
+     
+     
   var queryClause = '"SELECT "&SUBSTITUTE(ADDRESS(1,MATCH(' + desiredName + ',data!A1:NO1,0),4),1,"")';
   
-     //queryClause = SQL("data!A1:NO1","SELECT " + desiredName,false)
-     
-     
-     
-     //queryClause = "select  match(" + desiredName + "
-     
-  //queryClause = "select A";
      
   query.setQuery(queryClause);
 
@@ -88,6 +85,15 @@ function handleQueryResponse(response) {
     }
     */
 
+  function numberToLetter(num){
+  
+  num -= 1;
+  letter = String.charCodeAt((num % 26) + 97);
+  letter .= 	(floor($num/26) > 0) ? str_repeat($letter, floor($num/26)) : '';
+  return letter;
+    
+  }
+  
   </script>
 
 
