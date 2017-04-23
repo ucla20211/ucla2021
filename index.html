@@ -24,6 +24,8 @@ p    {color: red;font-family: "Times New Roman", Times, serif;}
 
   var queryClause = '"SELECT "&SUBSTITUTE(ADDRESS(1,MATCH(' + desiredName + ',data!A1:ZZ1,0),4),1,"")';
   
+     queryClause = "select A";
+     
   query.setQuery(queryClause);
 
   // Send the query with a callback function.
