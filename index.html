@@ -22,9 +22,11 @@ p    {color: red;font-family: "Times New Roman", Times, serif;}
   // Replace the data source URL on next line with your data source URL.
   var query = new google.visualization.Query(dataSourceUrl, opts);
 
-  var queryClause = '"SELECT "&SUBSTITUTE(ADDRESS(1,MATCH(' + desiredName + ',data!A1:ZZ1,0),4),1,"")';
+  var queryClause = '"SELECT "&SUBSTITUTE(ADDRESS(1,MATCH(' + desiredName + ',data!A1:NO1,0),4),1,"")';
   
-     queryClause = "select A";
+     //queryClause = "select  match(" + desiredName + "
+     
+  //queryClause = "select A";
      
   query.setQuery(queryClause);
 
