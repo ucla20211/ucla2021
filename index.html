@@ -12,10 +12,11 @@ p    {color: red;font-family: "Times New Roman", Times, serif;}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   
 <script>
-  google.charts.load('current', {'packages':['table']});
+  
    
    function initialize() {
    
+   google.charts.load('current', {'packages':['table']});
    
    var dataSourceUrl = 'http://spreadsheets.google.com/tq?key=1ASVFGT_jC5hEG7PE8k5rL7_JJlIZOp_yiRFmsclXThk&pub=1';
    
@@ -26,11 +27,13 @@ p    {color: red;font-family: "Times New Roman", Times, serif;}
      
      
    var desiredName = document.getElementById("name").value;
-   var indexOfName = $('#dfind td:contains(' + desiredName + ')').index();
+   
+   var indexOfName = $('#dfind td:contains(' + desiredName + ')').closest('tr').index();
+   
    
    var desiredLetter = numberToLetter(indexOfName);
      
-   var queryClause = "select A, B, C, " + desiredLetter + " order by " + desiredLetter;
+   var queryClause = "select A, B, C, " + desiredLetter + " order by " + desiredLetter + " desc";
      
    //var queryClause = '"SELECT "&SUBSTITUTE(ADDRESS(1,MATCH(' + desiredName + ',data!A1:NO1,0),4),1,"")';
      
@@ -59,37 +62,9 @@ function handleQueryResponse(response) {
 
   table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
   
-  //var container = document.getElementById("table");
-  
-  
-  
-  //var chart = new google.visualization.PieChart(document.getElementById('table'));
-  //chart.draw(data, {width: 400, height: 240, is3D: true});
   
 }
 
-    /*
-    var query, options, container;
-
-    function init() {
-      query = new google.visualization.Query(dataSourceUrl);
-      container = document.getElementById("table");
-      options = {'pageSize': 5};
-      sendAndDraw();
-    }
-
-    function sendAndDraw() {
-      query.abort();
-      var tableQueryWrapper = new TableQueryWrapper(query, container, options);
-      tableQueryWrapper.sendAndDraw();
-    }
-
-
-    function setOption(prop, value) {
-      options[prop] = value;
-      sendAndDraw();
-    }
-    */
 
   
   
@@ -97,7 +72,7 @@ function handleQueryResponse(response) {
   
   
   num -= 1;
-  num += 3;
+  num += 4;
  
  
   var moreLetters = Math.floor(num/26) > 0;
@@ -116,6 +91,8 @@ function handleQueryResponse(response) {
   
   	var onesDigit = num % 26;
   	letter += String.fromCharCode((onesDigit % 26) + 97);
+  
+  letter = letter.toUpperCase();
   
   return letter
    }
@@ -139,6 +116,8 @@ Insert full name (capitalize first and last; e.g. "Hakan Alpay")<br>
 
 <div id="table"></div>
   
+
+Currently in database: <br>
 
 <table border="1" class="dataframe" id="dfind">
   <thead>
