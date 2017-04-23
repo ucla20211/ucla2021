@@ -91,22 +91,34 @@ function handleQueryResponse(response) {
     }
     */
 
-  function numberToLetter(num){
   
-  //var num = parseFloat(document.getElementById('myTextField').value);
+  
+   function numberToLetter(num){
+  
   
   num -= 1;
+  num += 3;
  
-  letter = String.fromCharCode((num % 26) + 97);
-  
-  letter +=	(Math.floor(num/26) > 0) ? letter.repeat( floor(num/26)) : '';
  
-  //letter = letter.toUppercase();
+  var moreLetters = Math.floor(num/26) > 0;
   
-  alert(letter);
-    
-  return letter;
-}
+  letter = "";
+  var tensDigit = 0;
+  
+  if(moreLetters){
+  
+  	tensDigit = Math.floor(num/26);
+    tensDigit -= 1;
+    letter += String.fromCharCode((tensDigit % 26) + 97);
+  }
+  
+  
+  
+  	var onesDigit = num % 26;
+  	letter += String.fromCharCode((onesDigit % 26) + 97);
+  
+  return letter
+   }
   
   </script>
 
